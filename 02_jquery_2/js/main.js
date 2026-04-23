@@ -24,6 +24,7 @@ $(() => {
 
     title = '👕 Spring Apparel';
     // TODO:  id=shop-title のタイトルの設定: text()
+    $('#shop-title').text(title)
 
     title = `👕 Spring Apparel <span class='text-sm text-gray-400'>Men & Women Edition</span>`;
     // TODO: id=shop-title のタイトルの設定: html()
