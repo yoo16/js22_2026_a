@@ -3,7 +3,8 @@ $(() => {
     // 1 基本的なセレクタ
     // =============================================
     // TODO: id=shop-title を選択
-    const titleElement = {};
+    const titleElement = $('#shop-title')
+    // const titleElement = document.getElementById("shop-title");
     console.log(titleElement);
 
     // TODO: class=cart-item をすべて選択
