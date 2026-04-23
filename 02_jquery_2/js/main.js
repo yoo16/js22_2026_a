@@ -32,7 +32,7 @@ $(() => {
     $('#shop-title').html(title)
 
     // TODO: #cart-count に count を表示
-    $('#cart-count').text(count);
+    $('#cart-count').text($('.cart-item').length);
 
     // =============================================
     //  4 メソッド2
