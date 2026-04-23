@@ -102,6 +102,7 @@ $(() => {
 
     // TODO: 奇数番目の class=cart-item に class=oddClass を追加
     const oddClass = "bg-gray-100";
+    $('.cart-item').filter(':odd').addClass(oddClass)
 
     document.getElementById("all-filter-btn").addEventListener("click", () => {
         // TODO: 全商品を一旦表示
