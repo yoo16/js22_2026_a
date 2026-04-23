@@ -56,15 +56,19 @@ $(() => {
     // 商品カードのクラス
     // TODO: 親子：商品情報 .product > .info にクラス追加
     const infoClass = "p-2";
+    $('.product > .info').addClass(infoClass)
 
     // TODO: 子孫：商品名 class=product .name にクラス追加
     const productNameClass = "font-semibold text-lg";
+    $('.product .name').addClass(productNameClass)
 
-    // TODO: 子孫：商品価格 .product .note にクラス追加
+    // TODO: 子孫：商品ノート .product .note にクラス追加
     const noteClass = "text-sm text-gray-500";
+    $('.product .note').addClass(noteClass)
 
     // TODO: 子孫：商品価格 .product .price にクラス追加
     const priceClass = "font-bold text-lg";
+    $('.product .price').addClass(priceClass)
 
     // バニラJSの場合
     // document.querySelectorAll('.men').forEach(el => {
