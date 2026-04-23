@@ -86,15 +86,19 @@ $(() => {
     const saleDOM = $(saleTag).get(0);
     console.log(saleDOM);
 
-    // TODO: get(): index=1 の商品に saleTag タグを追加
+    // TODO: eq(): class=info の index=1 に saleTag タグを追加
+    $('.info').eq(1).append(saleTag)
 
-    // TODO: eq(): index=2 の商品（３番目の商品）に newTag タグを追加
+    // TODO: eq(): class=info の index=2 （３番目の商品）に newTag タグを追加
     const newTag = "<span class='text-xs bg-pink-200 text-pink-800 px-2 py-1 rounded'>NEW</span>";
+    $('.info').eq(2).append(newTag)
 
     // TODO: first(): 最初の商品に newTag を追加
+    $('.info').first().append(newTag)
 
     // TODO: last(): 最後の商品に hotTag を追加
     const hotTag = "<span class='text-xs bg-sky-200 text-sky-800 px-2 py-1 rounded'>HOT</span>";
+    $('.info').last().append(hotTag)
 
     // TODO: 奇数番目の class=cart-item に class=oddClass を追加
     const oddClass = "bg-gray-100";
