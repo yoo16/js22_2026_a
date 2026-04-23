@@ -18,8 +18,8 @@ $(() => {
     // =============================================
     // ️2 基本的なメソッド
     // =============================================
-    let title = "";
     // TODO: id=shop-title のテキストコンテンツ取得
+    let title = $('#shop-title').text()
     console.log("Original title:", title);
 
     title = '👕 Spring Apparel';
