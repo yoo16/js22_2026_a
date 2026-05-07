@@ -42,8 +42,8 @@ $('#character-select').on('change', function () {
 
 // #character-list li だとクリックが反応しない
 // TODO: イベントデリゲーション: on('click', 'li', function() {...})
-$('#character-list li').on('click', function () {
-    // data-character を取得
+$('#character-list').on('click', 'li', function () {
+    // data-character を取得: data-character 属性を取得
     const id = $(this).data('character');
     updateImage(id);
 });
