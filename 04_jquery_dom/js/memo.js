@@ -229,20 +229,20 @@ $(function () {
         const key = event.key || event.originalEvent?.key;
 
         // TODO: 日本語入力中のEnterキーを無視
-        // const isComposing = event.originalEvent?.isComposing || event.isComposing || event.which === 229;
-        // if (isComposing) {
-        //     return;
-        // }
+        const isComposing = event.originalEvent?.isComposing || event.isComposing || event.which === 229;
+        if (isComposing) {
+            return;
+        }
 
         // Enterキーでメモを追加
         if (key === "Enter" || event.which === 13 || event.keyCode === 13) {
             event.preventDefault();
             // TODO: メモを追加
-            // const element = newItem();
-            // element.appendTo("#item-list");
-            // selectItem(element);
-            // updateMeta();
-            // clearInput();
+            const element = newItem();
+            element.appendTo("#item-list");
+            selectItem(element);
+            updateMeta();
+            clearInput();
         }
     });
 
