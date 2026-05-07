@@ -188,6 +188,7 @@ $(function () {
         if (selected.length) {
             const element = newItem();
             // TODO: 選択中のメモの前に挿入
+            selected.before(element);
 
             // メタ情報の更新
             updateMeta();
