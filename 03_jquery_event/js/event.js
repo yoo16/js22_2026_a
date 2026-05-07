@@ -12,6 +12,7 @@ $("#click-button").on("click", function () {
         var message = userName + "さん、ようこそ！";
         // TODO: id=result-event にメッセージ表示: text()
         $("#result-event").text(message)
+        // document.getElementById('result-event').textContent = message
     }
 });
 
