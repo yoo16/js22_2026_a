@@ -38,6 +38,7 @@ $(function () {
         // 選択状態を保存
         if (selected.is(item)) {
             // TODO: すでに選択中の場合、選択解除: selected = $()
+            selected = $()
         } else {
             // 選択状態を追加
             item.addClass(selectedClass);
@@ -91,6 +92,7 @@ $(function () {
                 selected = $();
             }
             // TODO: liタグの削除
+            li.remove()
 
             updateMeta();
         });
@@ -257,7 +259,7 @@ $(function () {
         selectItem(li);
 
         // TODO: inputタグ type=textを生成
-        const input = $("", {
+        const input = $("<input>", {
             type: "text",
             class: inlineEditClass,
             val: text.text(),
@@ -312,7 +314,7 @@ $(function () {
      */
     function finishInlineEdit(li, input, text, save) {
         // TODO: インライン入力値の取得
-        const nextValue = "";
+        const nextValue = input.val().trim();
         // 値があればテキストを置き換える
         if (save && nextValue) {
             text.text(nextValue);
