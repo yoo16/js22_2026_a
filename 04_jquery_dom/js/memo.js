@@ -42,6 +42,7 @@ $(function () {
             // 選択状態を追加
             item.addClass(selectedClass);
             // TODO: 選択状態を保存: selected = item
+            selected = item;
         }
     }
 
@@ -189,6 +190,7 @@ $(function () {
             const element = newItem();
             // TODO: 選択中のメモの前に挿入
             selected.before(element);
+            // element.insertBefore(selected);
 
             // メタ情報の更新
             updateMeta();
@@ -206,6 +208,8 @@ $(function () {
         if (selected.length) {
             const element = newItem();
             // TODO: 選択中のメモの後に追加
+            selected.after(element);
+            // element.insertAfter(selected);
 
             // メタ情報の更新
             updateMeta();
