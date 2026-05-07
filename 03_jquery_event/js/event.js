@@ -1,6 +1,6 @@
 // バニラJS
 // document.getElementById('click-button').addEventListener("click", function () { 
-//     $("#result-event").text('クリックしました')
+//     document.getElementById('result-event').textContent = 'クリックしました'
 //  })
 
 // TODO: クリックイベント: イベント名 = click
