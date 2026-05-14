@@ -24,26 +24,32 @@ $(function () {
     // id=fadeInBtn がクリックされたとき
     $("#fadeInBtn").on("click", function () {
         // TODO: character_2 を fadeIn() でフェードイン
+        character_2.fadeIn(500)
     });
     // id=fadeOutBtn がクリックされたとき
     $("#fadeOutBtn").on("click", function () {
         // TODO: character_2 を fadeOut() でフェードアウト
+        character_2.fadeOut(500)
     });
 
     $("#fadeToggleBtn").on("click", function () {
         // TODO: character_2 を fadeToggle() でフェードトグル
+        character_2.fadeToggle(500)
     });
     // id=slideDownBtn がクリックされたとき
     $("#slideDownBtn").on("click", function () {
         // TODO: character_3 を slideDown() でスライド表示
+        character_3.slideDown(500)
     });
 
     $("#slideUpBtn").on("click", function () {
         // TODO: character_3 を slideUp() でスライド非表示
+        character_3.slideUp(500)
     });
 
     $("#slideToggleBtn").on("click", function () {
         // TODO: character_3 を slideToggle() でスライドトグル
+        character_3.slideToggle(500)
     });
     // id=shakeBtn がクリックされたとき
     $("#shakeBtn").on("click", function () {
@@ -67,7 +73,17 @@ $(function () {
     $("#easingBtn").on("click", function () {
         initBox();
         // TODO: box1 を width=300px でアニメーション: easing=linear
+        box1.animate(
+            { width: "300px" },
+            500,
+            'linear'
+        )
         // TODO: box2 を width=300px でアニメーション: easing=swing
+        box2.animate(
+            { width: "300px" },
+            500,
+            'swing'
+        )
     })
 
     $("#animateBtn").on("click", function () {
