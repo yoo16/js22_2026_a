@@ -62,9 +62,13 @@ $(function () {
                 // console.log(element);
                 // TODO: アニメーションで左に揺らす
                 // TODO: アニメーションで右に揺らす
+                element.animate({ left: -distance }, delay)
+                       .animate({ left: distance }, delay)
                 // TODO: コールバックで再帰的に shake() を呼び出す
+                shake(element, count - 1)
             } else {
                 // TODO: 最後に元の位置へ戻す
+                element.animate({ left: 0 }, delay);
             }
         }
         shake(character_4, times);
