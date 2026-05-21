@@ -40,21 +40,21 @@ $(function () {
         $(`.thumbnail[data-index="${index}"]`).addClass("is-active");
 
         // TODO: メイン画像切り替え（フェードアウト/フェードイン）
-        // $mainImage.fadeOut(220, function () {
-        //     $mainImage.attr({
-        //         src: item.image,
-        //         alt: item.name,
-        //     }).fadeIn(220);
-        // });
+        $mainImage.fadeOut(500, function () {
+            $mainImage.attr({
+                src: item.image,
+                alt: item.name,
+            }).fadeIn(500);
+        });
 
         // メタデータ更新
-        // $mainTitle.text(item.name);
-        // $mainCopy.text(item.caption);
-        // $mainPrice.text(`¥${item.price.toLocaleString()}`);
-        // $mainCalories.text(`${item.calories} kcal`);
-        // $mainRating.text(`★ ${item.rating}`);
-        // $mainTags.html(renderTags(item.tags));
-        // $mainRecommended.toggle(item.isRecommended);
+        $mainTitle.text(item.name);
+        $mainCopy.text(item.caption);
+        $mainPrice.text(`¥${item.price.toLocaleString()}`);
+        $mainCalories.text(`${item.calories} kcal`);
+        $mainRating.text(`★ ${item.rating}`);
+        $mainTags.html(renderTags(item.tags));
+        $mainRecommended.toggle(item.isRecommended);
     }
 
     // クリックしたらメイン画像切り替え
