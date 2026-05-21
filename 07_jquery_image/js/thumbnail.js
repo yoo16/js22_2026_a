@@ -11,19 +11,19 @@ $(function () {
 
     function renderThumbnails() {
         // TODO: サムネイル生成: HTMLテンプレート
-        // const thumbnailHtml = items.map((item, index) => `
-        //     <li>
-        //         <button class="thumbnail thumb-button${index === 0 ? " is-active" : ""}" data-index="${index}" type="button">
-        //             <img class="thumb-image" src="${item.image}" alt="${item.name}">
-        //             <span class="thumb-body">
-        //                 <span class="thumb-title">${item.name}</span>
-        //                 <span class="thumb-meta">¥${item.price.toLocaleString()} / ★ ${item.rating}</span>
-        //             </span>
-        //         </button>
-        //     </li>
-        // `).join("");
+        const thumbnailHtml = items.map((item, index) => `
+            <li>
+                <button class="thumbnail thumb-button${index === 0 ? " is-active" : ""}" data-index="${index}" type="button">
+                    <img class="thumb-image" src="${item.image}" alt="${item.name}">
+                    <span class="thumb-body">
+                        <span class="thumb-title">${item.name}</span>
+                        <span class="thumb-meta">¥${item.price.toLocaleString()} / ★ ${item.rating}</span>
+                    </span>
+                </button>
+            </li>
+        `).join("");
 
-        // $thumbList.append($(thumbnailHtml));
+        $thumbList.append($(thumbnailHtml));
     }
 
     function renderTags(tags) {
