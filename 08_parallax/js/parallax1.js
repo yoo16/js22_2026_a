@@ -21,5 +21,6 @@ $(document).ready(function () {
         // TODO: $parallaxContent.css()
         // transform: translateY
         $parallaxContent.css('transform', 'translateY(' + translateY + 'px)');
+        // $parallaxContent.css('transform', 'translateX(' + translateY + 'px)');
     });
 });
