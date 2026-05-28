@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const speed = parseFloat(layer.dataset.speed);
 
             // TODO: data-speed を取得して、transform を設定
-            // layer.style.transform = `translate3d(0, ${-(scrollY * speed)}px, 0)`;
+            layer.style.transform = `translate3d(0, ${-(scrollY * speed)}px, 0)`;
         });
 
         // ヒーロータイトルのフェードアウト + 上方向スライド
