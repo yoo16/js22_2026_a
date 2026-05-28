@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const speed = parseFloat(bgText.dataset.speedX || 0.3);
         const offset = window.scrollY * speed;
         // TODO: 背景テキストの Y軸方向（Y-axis）に移動距離を計算して、transform を設定
-        // bgText.style.transform = `translateY(-50%) translateX(${-offset}px)`;
+        bgText.style.transform = `translateY(-50%) translateX(${-offset}px)`;
     }
 
     // ====================================
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // スクロール領域に入ったときの処理
             if (relative > 0 && relative < winHeight * 2) {
                 // TODO: カードの上方向への移動距離を計算して、transform を設定
-                // card.style.transform = `translate3d(0, ${-(relative - winHeight) * speed}px, 0)`;
+                card.style.transform = `translate3d(0, ${-(relative - winHeight) * speed}px, 0)`;
             }
         });
     }
