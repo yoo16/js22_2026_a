@@ -39,8 +39,8 @@ document.addEventListener('DOMContentLoaded', function () {
             user.birthday = document.getElementById('user-birthday').value;
             user.city = document.getElementById('user-city').value;
 
-            // TODO: JSONデータをテキストエリアに表示: JSON.stringify を使用
-            jsonString = "";
+            // TODO: オブジェクトをJSON に変換してテキストエリアに表示: JSON.stringify を使用
+            jsonString = JSON.stringify(user);
             // テキストエリアにJSONデータ表示
             jsonUserElement.textContent = jsonString
         } catch (error) {
