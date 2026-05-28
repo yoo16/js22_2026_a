@@ -35,8 +35,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // ヒーロータイトルのフェードアウト + 上方向スライド
         const progress = Math.min(scrollY / hero.offsetHeight, 1);
         // TODO: スクロールの割合（progress）に応じて、transform と opacity を設定
-        // heroTitle.style.transform = `translate(-50%, calc(-50% - ${scrollY * 0.5}px))`;
-        // heroTitle.style.opacity = 1 - progress * 1.5;
+        heroTitle.style.transform = `translate(-50%, calc(-50% - ${scrollY * 0.5}px))`;
+        heroTitle.style.opacity = 1 - progress * 3.5;
     }
 
     // ====================================
