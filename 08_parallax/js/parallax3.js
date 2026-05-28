@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateProgress() {
         const docHeight = document.documentElement.scrollHeight - window.innerHeight;
         // TODO: スクロール位置に基づいてプログレスバーの幅を設定
-        // progressBar.style.width = `${(window.scrollY / docHeight) * 100}%`;
+        progressBar.style.width = `${(window.scrollY / docHeight) * 100}%`;
     }
 
     // ====================================
