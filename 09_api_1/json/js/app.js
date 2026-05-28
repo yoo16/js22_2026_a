@@ -13,7 +13,8 @@ document.addEventListener('DOMContentLoaded', function () {
     async function loadUser() {
         try {
             errorElement.textContent = '';
-            // TODO: JSONファイルをフェッチして、ユーザ情報を取得
+            // TODO: APIサーバから、JSONデータを取得: fetch を使用
+            const API_URL = './data/users.json';
             const response = {};
             // TODO: 非同期 で JSONデータをJavaScriptオブジェクトに変換: response.json() を使用
             user = {};
