@@ -14,10 +14,9 @@ document.addEventListener('DOMContentLoaded', function () {
         try {
             errorElement.textContent = '';
             // TODO: APIサーバから、JSONデータを取得: fetch を使用
-            const API_URL = './data/users.json';
-            const response = {};
+            const response = await fetch('./data/users.json');
             // TODO: 非同期 で JSONデータをJavaScriptオブジェクトに変換: response.json() を使用
-            user = {};
+            user = await response.json();
             // TODO: JSONデータをテキストエリアに表示: JSON.stringify を使用
             jsonUserElement.textContent = JSON.stringify(user, null, 2);
 

@@ -1,117 +1,76 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const fetchQuoteButton = document.getElementById("fetch-quote-button");
-    const loadingDiv = document.getElementById("loading");
-    const errorDiv = document.getElementById("error");
-    const quoteDiv = document.getElementById("quote");
-    const authorDiv = document.getElementById("author");
-    const metaCard = document.getElementById("meta-card");
-    const themeBadge = document.getElementById("theme-badge");
-    const authorName = document.getElementById("author-name");
-    const authorRole = document.getElementById("author-role");
+const API_URL = './data/users.json';
+const resultDiv = document.getElementById('result');
 
-    let quoteEntries = [];
+// XHRリクエスト（非同期）:XMLHttpRequestオブジェクトの作成
+const xhr = new XMLHttpRequest();
+// TODO: XHRリクエスト（非同期）:open() : GETリクエストを設定
 
-    async function fetchJson(url) {
-        const response = await fetch(url);
-        if (!response.ok) {
-            throw new Error("network");
-        }
-        return response.json();
-    }
-
-    async function loadQuoteEntries() {
-        // 直列処理
-        const quotes = await fetchJson("./data/quotes.json");   // 1秒待つ
-        const authors = await fetchJson("./data/authors.json"); // さらに1秒待つ
-        // TODO: 並列処理 Promise.all() で fetchJson() でデータ取得
-        // const [quotes, authors] = [];
-
-        // quotes を繰り返し
-        quoteEntries = quotes.map(function (quote) {
-            // quote.author をキーに authors から著者情報を取得
-            const authorInfo = authors[quote.author];
-
-            return {
-                text: quote.text,
-                author: quote.author,
-                role: authorInfo ? authorInfo.role : "著者情報なし",
-                theme: authorInfo ? authorInfo.theme : "No Theme",
-                accent: authorInfo ? authorInfo.accent : "slate"
-            };
-        });
-    }
-
-    function resetUi() {
-        loadingDiv.classList.remove("hidden");
-        errorDiv.classList.add("hidden");
-        quoteDiv.classList.add("hidden");
-        authorDiv.classList.add("hidden");
-        metaCard.classList.add("hidden");
-    }
-
-    function pickRandomQuote() {
-        const index = Math.floor(Math.random() * quoteEntries.length);
-        return quoteEntries[index];
-    }
-
-    async function handlerRandomQuote() {
-        fetchQuoteButton.disabled = true;
-        fetchQuoteButton.classList.add("opacity-50", "cursor-not-allowed");
-        resetUi();
-
+//  XHRリクエスト（非同期）:onload()
+xhr.onload = function () {
+    // TODO: レスポンスの処理:ステータスコード: xhr.status === 200 なら成功、そうでなければ失敗
+    if (false) {
         try {
-            if (quoteEntries.length === 0) {
-                await loadQuoteEntries();
-            }
-            // ランダムに quoteEntries から名言を1件取得
-            const quote = pickRandomQuote();
-            displayQuote(quote);
-        } catch (error) {
-            displayError(error.message || error);
-        } finally {
-            loadingDiv.classList.add("hidden");
-            fetchQuoteButton.disabled = false;
-            fetchQuoteButton.classList.remove("opacity-50", "cursor-not-allowed");
+            // TODO: レスポンスの処理:JSON.parse() で responseText をオブジェクトに変換
+            const users = {};
+            renderUsers(users);
+        } catch (e) {
+            showError('データの解析に失敗しました。');
         }
+    } else {
+        showError('リクエストが失敗しました。');
     }
+};
 
-    function displayQuote(quote) {
-        quoteDiv.textContent = quote.text;
-        authorDiv.textContent = "— " + quote.author;
-        authorName.textContent = quote.author;
-        authorRole.textContent = quote.role;
-        themeBadge.textContent = quote.theme;
-        applyAccent(quote.accent);
+xhr.onerror = function () {
+    showError('ネットワークエラーが発生しました。');
+};
 
-        quoteDiv.classList.remove("hidden");
-        authorDiv.classList.remove("hidden");
-        metaCard.classList.remove("hidden");
-    }
+// TODO: XHRリクエスト（非同期）:send()
 
-    function applyAccent(accent) {
-        const accentClasses = {
-            sky: "bg-sky-600 text-white",
-            amber: "bg-amber-600 text-white",
-            emerald: "bg-emerald-600 text-white",
-            slate: "bg-slate-600 text-white"
-        };
+function renderUsers(users) {
+    resultDiv.innerHTML = ''; // クリア
+    users.forEach(user => {
+        const userCard = document.createElement('div');
+        // カード全体のスタイル
+        userCard.className = "bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-md transition-all duration-300 transform hover:-translate-y-1";
 
-        themeBadge.className = "inline-flex rounded-full px-3 py-1 text-xs font-bold uppercase tracking-[0.2em]";
-        themeBadge.classList.add(...(accentClasses[accent] || accentClasses.slate).split(" "));
-    }
+        userCard.innerHTML = `
+            <div class="flex flex-col h-full">
+                <div class="mb-4">
+                    <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center font-bold text-xl mb-3">
+                        ${user.name.charAt(0)}
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-800">${user.name}</h3>
+                </div>
+                
+                <div class="space-y-3 mt-auto">
+                    <div class="flex items-center justify-between text-sm">
+                        <span class="text-slate-500 font-medium">年齢</span>
+                        <span class="px-2.5 py-0.5 bg-slate-100 text-slate-700 rounded-full text-xs font-bold">${user.age} 歳</span>
+                    </div>
+                    <div class="flex items-center justify-between text-sm">
+                        <span class="text-slate-500 font-medium">居住地</span>
+                        <span class="flex items-center text-slate-700">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 mr-1 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            ${user.city}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        `;
+        resultDiv.appendChild(userCard);
+    });
+}
 
-    function displayError(type) {
-        const messages = {
-            network: "JSON の取得に失敗しました。ファイル配置かパスを確認してください。"
-        };
-
-        errorDiv.innerHTML = `
-        <div class="space-y-2">
-            <div class="text-2xl font-black tracking-tight text-red-200">Promise.all 読み込み失敗</div>
-            <p class="text-red-100 font-bold">${messages[type] || "エラーが発生しました。"}</p>
-        </div>`;
-        errorDiv.classList.remove("hidden");
-    }
-
-    fetchQuoteButton.addEventListener("click", handlerRandomQuote);
-});
+function showError(message) {
+    resultDiv.innerHTML = `
+        <div class="col-span-full text-center py-10">
+            <div class="bg-red-50 text-red-600 p-4 rounded-lg inline-block border border-red-100 font-medium">
+                ${message}
+            </div>
+        </div>
+    `;
+}
