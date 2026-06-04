@@ -41,17 +41,18 @@ const renderPrefectures = (prefectures) => {
     })
 }
 
-// 郵便番号検索
+// 郵便番号検索：（非同期通信）:アロー関数
 const searchAddress = async (zipcode) => {
     try {
         const query_param = new URLSearchParams({ zipcode: zipcode, })
         // TODO: SEARCH_URI に zipcode を追加
-        const uri = SEARCH_URI;
+        // https://zipcloud.ibsnet.co.jp/api/search?zipcode=xxxxxx
+        const uri = SEARCH_URI + '?' + query_param.toString();
         console.log(uri);
         // TODO: fetch(): 郵便番号検索APIにアクセス（非同期）
-        const response = {}; 
+        const response = await fetch(uri)
         // TODO: JSONデータを変換（非同期）
-        const data = {};
+        const data = await response.json();
         return data;
     } catch (error) {
         errorDisplay.innerHTML = error;
