@@ -12,7 +12,7 @@ const cartModal = document.getElementById('cart-modal');
 // 商品データ
 let allProducts = [];
 
-// APIから商品データを取得
+// APIから商品データを取得:（非同期通信）
 async function fetchProducts() {
     // ローディング表示
     loader.classList.remove('hidden');
@@ -23,11 +23,11 @@ async function fetchProducts() {
         const productsApiURL = 'api/products/get.php';
 
         // TODO: APIから商品データを取得: fetchAPI
-        const response = {};
+        const response = await fetch(productsApiURL)
         // APIレスポンスをチェック
         if (!response.ok) showFlash('商品データの取得に失敗しました');
         // TODO: JSON形式でレスポンスを取得: json()
-        allProducts = [];
+        allProducts = await response.json()
         // 商品一覧を描画
         renderProducts(allProducts);
     } catch (error) {
