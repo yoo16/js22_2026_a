@@ -84,9 +84,9 @@ const searchHandler = async () => {
     } catch (e) {
         errorDisplay.innerHTML = '通信エラーが発生しました';
     } finally {
-        setTimeout(() => {
-            loadingModal.classList.add('hidden');
-        }, 500);
+        // setTimeout(() => {
+        //     loadingModal.classList.add('hidden');
+        // }, 500);
     }
 }
 
