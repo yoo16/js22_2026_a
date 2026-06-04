@@ -71,13 +71,13 @@ const searchHandler = async () => {
     try {
         // TODO: 郵便番号検索APIにアクセス
         const data = await searchAddress(zipcode);
-        
+        console.log(data);
         if (data && data.results) {
-            const results = data.results[0];
+            const results = data.results[0];  // データの最初の要素を取得
             // TODO: value に都道府県コード設定: prefcode
-            document.getElementById('prefecture').value = "";
+            document.getElementById('prefecture').value = results.prefcode
             // TODO: テキストに住所設定: address2, address3
-            document.getElementById('city').value = "";
+            document.getElementById('city').value = results.address2 + results.address3
         } else {
             errorDisplay.innerHTML = data.message || '住所が見つかりませんでした';
         }
