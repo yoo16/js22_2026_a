@@ -18,7 +18,7 @@ const textButton = document.getElementById('textButton');
 const clearButton = document.getElementById('clearButton');
 
 /**
- * clearCanvas
+ * clearCanvas: canvas のグラフィックをすべて消去
  */
 function clearCanvas() {
     ctx.clearRect(0, 0, width, height);
@@ -42,13 +42,13 @@ function drawCard() {
     ctx.lineWidth = 2;
 
     // TODO: 角丸長方形のパスを定義
-    // ctx.quadraticCurveTo(x + rectWidth, y, x + rectWidth, y + radius);
-    // ctx.lineTo(x + rectWidth, y + rectHeight - radius);
-    // ctx.quadraticCurveTo(x + rectWidth, y + rectHeight, x + rectWidth - radius, y + rectHeight);
-    // ctx.lineTo(x + radius, y + rectHeight);
-    // ctx.quadraticCurveTo(x, y + rectHeight, x, y + rectHeight - radius);
-    // ctx.lineTo(x, y + radius);
-    // ctx.quadraticCurveTo(x, y, x + radius, y);
+    ctx.quadraticCurveTo(x + rectWidth, y, x + rectWidth, y + radius);
+    ctx.lineTo(x + rectWidth, y + rectHeight - radius);
+    ctx.quadraticCurveTo(x + rectWidth, y + rectHeight, x + rectWidth - radius, y + rectHeight);
+    ctx.lineTo(x + radius, y + rectHeight);
+    ctx.quadraticCurveTo(x, y + rectHeight, x, y + rectHeight - radius);
+    ctx.lineTo(x, y + radius);
+    ctx.quadraticCurveTo(x, y, x + radius, y);
 
     // パスを閉じる
     ctx.closePath();
