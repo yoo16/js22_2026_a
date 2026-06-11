@@ -214,6 +214,7 @@ function openInfoWindow(place, targetMarker) {
     <div style="min-width: 180px">
       <p style="margin: 0 0 4px; font-weight: 700;">${place.name}</p>
       <p style="margin: 0; color: #475569;">${place.address}</p>
+      <p style="margin: 0 0 4px; font-weight: 700;">ツチノコが出没したらしい</p>
     </div>
   `);
   infoWindow.open(map, targetMarker);
