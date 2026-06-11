@@ -114,22 +114,22 @@ function bindEvents() {
 // 地図クリック時の処理
 function handleMapClick(latLng) {
   // TODO: マーカーモード: marker
-  if (activeMode === '') {
-    const position = latLng.toJSON();
-    selectedMarker.setPosition(position);
-    map.panTo(position);
+  if (activeMode === 'marker') {
+    const position = latLng.toJSON();  // クリックした地点の座標を取得
+    selectedMarker.setPosition(position);  // クリックした地点にマーカーする
+    map.panTo(position); // 地図の中心をクリックした地点に移動
     showSelectedPoint(position);
     return;
   }
 
   // TODO: 線描画モード: line
-  if (activeMode === '') {
+  if (activeMode === 'line') {
     addLinePoint(latLng);
     return;
   }
 
   // TODO: 範囲描画モード: polygon
-  if (activeMode === '') {
+  if (activeMode === 'polygon') {
     addPolygonPoint(latLng);
     return;
   }
@@ -217,7 +217,7 @@ function drawCircle(latLng) {
   circleOverlay = new google.maps.Circle({
     map,
     center: latLng,
-    radius: 600,
+    radius: 1000,
     strokeColor: '#e11d48',
     strokeOpacity: 0.9,
     strokeWeight: 3,
