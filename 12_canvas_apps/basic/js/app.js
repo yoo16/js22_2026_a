@@ -119,9 +119,9 @@ function drawCircle() {
 
     // TODO: 円の描画
     ctx.beginPath();
-    // ctx.arc(474, 286, 72, 0, Math.PI * 2);
-    // ctx.fillStyle = circleGradient;
-    // ctx.fill();
+    ctx.arc(474, 286, 72, 0, Math.PI * 2);
+    ctx.fillStyle = circleGradient;
+    ctx.fill();
     ctx.restore();
 }
 
