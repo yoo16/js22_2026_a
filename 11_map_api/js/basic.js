@@ -33,16 +33,16 @@ window.initMap = function initMap() {
 
   map = new google.maps.Map(document.getElementById('map'), {
     // TODO: 中心をデフォルトスポットの座標に設定
-    center: null,
+    center: tokyo.position,
     // TODO: ズームレベルを設定 (例: 14)
-    zoom: 1,
+    zoom: 14,
     mapTypeControl: false,
     streetViewControl: false,
     fullscreenControl: true,
   });
 
   // TODO: マーカーを作成
-  // marker = createMarker(defaultPlace);
+  marker = createMarker(defaultPlace);
 
   // サンプルスポットを PHP サーバーから取得して地図に表示
   loadSampleSpots();
