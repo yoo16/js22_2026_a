@@ -68,10 +68,10 @@ function drawSquare() {
 
     // TODO: 四角形の描画
     ctx.beginPath();
-    // ctx.rect(150, 300, 200, 200);
+    ctx.rect(150, 300, 200, 200);
     // // 塗りつぶしのスタイル適用
-    // ctx.fillStyle = squareGradient;
-    // ctx.fill();
+    ctx.fillStyle = squareGradient;
+    ctx.fill();
     ctx.closePath();
 
     // 描画状態を復元
@@ -90,9 +90,9 @@ function drawTriangle() {
 
     // TODO: 三角形の描画
     ctx.beginPath();
-    // ctx.moveTo(424, 226);
-    // ctx.lineTo(536, 420);
-    // ctx.lineTo(312, 420);
+    ctx.moveTo(424, 226);
+    ctx.lineTo(536, 420);
+    ctx.lineTo(312, 420);
     ctx.closePath();
     // 塗りつぶしのスタイル適用
     ctx.fillStyle = '#f8fafc';
