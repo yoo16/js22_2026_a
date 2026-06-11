@@ -58,7 +58,7 @@ window.initMap = function initMap() {
   // mapTypeId: 'roadmap'
   map = new google.maps.Map(document.getElementById('map'), {
     center: shinjuku,
-    zoom: 14,
+    zoom: 13,
     mapTypeId: 'roadmap',
     mapTypeControl: false,
     streetViewControl: true,
@@ -66,11 +66,11 @@ window.initMap = function initMap() {
   });
 
   // TODO: 初期マーカーの設定
-  // selectedMarker = new google.maps.Marker({
-  //   position: tokyo,
-  //   map,
-  //   title: '東京駅',
-  // });
+  selectedMarker = new google.maps.Marker({
+    position: tokyo,
+    map,
+    title: '東京駅',
+  });
 
   bindEvents();
   showSelectedPoint(tokyo);
