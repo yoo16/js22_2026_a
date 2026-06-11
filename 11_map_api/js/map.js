@@ -17,6 +17,7 @@ const clickMarkers = [];
 
 // 東京駅の座標
 const tokyo = { lat: 35.681236, lng: 139.767125 };
+const shinjuku = { lat: 35.689487, lng: 139.691706 };
 
 // 地図スタイルの定義
 const mapStyles = {
@@ -56,8 +57,8 @@ window.initMap = function initMap() {
   // zoom: 14
   // mapTypeId: 'roadmap'
   map = new google.maps.Map(document.getElementById('map'), {
-    center: tokyo,
-    zoom: 1,
+    center: shinjuku,
+    zoom: 14,
     mapTypeId: 'roadmap',
     mapTypeControl: false,
     streetViewControl: true,
