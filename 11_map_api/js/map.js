@@ -279,7 +279,7 @@ function showSelectedPoint(position) {
   `;
 
     setPointPanel(html);
-    infoWindow.setContent(`<strong>クリック地点</strong><br>${escapedAddress}`);
+    // infoWindow.setContent(`<strong>クリック地点</strong><br>${escapedAddress}`);
     infoWindow.open(map, selectedMarker);
   });
 }
