@@ -87,7 +87,7 @@ function bindEvents() {
   document.querySelectorAll('.map-type').forEach((button) => {
     button.addEventListener('click', () => {
       // TODO: data-type 属性を使って地図のタイプを切り替える
-      // setMapType(button.dataset.type);
+      setMapType(button.dataset.type);
       setActiveButton('.map-type', button, 'bg-zinc-900');
     });
   });
