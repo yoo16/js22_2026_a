@@ -46,8 +46,8 @@ const mapStyles = {
 // 地図初期化関数: Google Maps API の読み込み後に呼び出される
 window.initMap = function initMap() {
   // ジオコーディング API 
-  // TODO: 現在の座標から住所を取得
-  // geocoder = new google.maps.Geocoder();
+  // TODO: 現在の座標を取得
+  geocoder = new google.maps.Geocoder();
 
   // 情報ウィンドウ
   infoWindow = new google.maps.InfoWindow();
