@@ -1,7 +1,7 @@
 // Canvas 要素を取得し、2D コンテキストを取得
 const canvas = document.getElementById('myCanvas');
 // TODO: 2D コンテキストを取得
-// const ctx = canvas.getContext('2d');
+const ctx = canvas.getContext('2d');
 
 // Canvas の幅と高さを取得
 const width = canvas.width;
