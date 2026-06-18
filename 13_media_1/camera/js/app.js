@@ -157,10 +157,10 @@ function drawFrameText() {
     ctx.font = `900 ${fontSize}px Arial, sans-serif`;
 
     // TODO: テキストの幅が最大幅を超える場合、フォントサイズを小さくして調整
-    // while (fontSize > 26 && ctx.measureText(text).width > maxTextWidth) {
-    //     fontSize -= 2;
-    //     ctx.font = `900 ${fontSize}px Arial, sans-serif`;
-    // }
+    while (fontSize > 26 && ctx.measureText(text).width > maxTextWidth) {
+        fontSize -= 2;
+        ctx.font = `900 ${fontSize}px Arial, sans-serif`;
+    }
 
     // テキストをフレーム上に描画
     const x = canvasWidth / 2;
@@ -168,10 +168,10 @@ function drawFrameText() {
     ctx.lineJoin = 'round';
     ctx.lineWidth = Math.max(8, fontSize * 0.18);
     // TODO: フレーム文字色を適用
-    // ctx.strokeStyle = 'rgba(255, 255, 255, 0.92)';
-    // ctx.fillStyle = frameTextColorValue;
-    // ctx.strokeText(text, x, y);
-    // ctx.fillText(text, x, y);
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.92)';
+    ctx.fillStyle = frameTextColorValue;
+    ctx.strokeText(text, x, y);
+    ctx.fillText(text, x, y);
     ctx.restore();
 }
 
