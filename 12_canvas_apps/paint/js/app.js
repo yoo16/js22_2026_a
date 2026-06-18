@@ -181,7 +181,7 @@ lineWidthRange.addEventListener('input', (e) => {
 // リセットボタンクリック
 resetButton.addEventListener('click', () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    drawPaperBackground();
+    // drawPaperBackground();
 });
 
 // ダウンロードボタンクリック
@@ -210,4 +210,4 @@ eraserButton.addEventListener('click', () => {
 lineWidthValue.textContent = currentLineWidth;
 colorValue.textContent = currentColor;
 updateEraserButton();
-drawPaperBackground();
+// drawPaperBackground();
