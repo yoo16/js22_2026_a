@@ -125,17 +125,17 @@ function drawVideoCover() {
     // ctx.filter = imageFilters[currentFilter] || imageFilters.natural;
 
     // TODO: ビデオをキャンバス全体に cover 表示で描画
-    // ctx.drawImage(
-    //     video,
-    //     sourceX,
-    //     sourceY,
-    //     sourceWidth,
-    //     sourceHeight,
-    //     0,
-    //     0,
-    //     canvasWidth,
-    //     canvasHeight
-    // );
+    ctx.drawImage(
+        video,
+        sourceX,
+        sourceY,
+        sourceWidth,
+        sourceHeight,
+        0,
+        0,
+        canvasWidth,
+        canvasHeight
+    );
 
     // ctx の状態を復元
     ctx.restore();
