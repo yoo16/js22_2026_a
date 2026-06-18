@@ -80,17 +80,17 @@ function createcanvas() {
  */
 const onCamera = async () => {
     // TODO: カメラの有効化処理を実装
-    // const stream = await navigator.mediaDevices.getUserMedia({
-    //     video: {
-    //         width: { ideal: 1280 },
-    //         height: { ideal: 1920 },
-    //         facingMode: 'user',
-    //     },
-    //     audio: false,
-    // });
+    const stream = await navigator.mediaDevices.getUserMedia({
+        video: {
+            width: { ideal: 1280 },
+            height: { ideal: 1920 },
+            facingMode: 'user',
+        },
+        audio: false,
+    });
 
     // TODO: ビデオ要素にカメラ映像を表示
-    // video.srcObject = stream;
+    video.srcObject = stream;
 };
 
 /**
