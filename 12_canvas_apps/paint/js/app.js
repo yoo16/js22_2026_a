@@ -102,10 +102,10 @@ function draw(x, y) {
     ctx.lineWidth = currentLineWidth;
 
     // TODO: 前回の位置から現在の位置まで線を描画
-    // ctx.beginPath();
-    // ctx.moveTo(lastX, lastY);
-    // ctx.lineTo(x, y);
-    // ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(lastX, lastY);
+    ctx.lineTo(x, y);
+    ctx.stroke();
 
     // 最後の位置を更新
     [lastX, lastY] = [x, y];
