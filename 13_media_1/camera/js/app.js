@@ -122,7 +122,7 @@ function drawVideoCover() {
     // ctx の状態を保存
     ctx.save();
     // TODO: 選択されたフィルターを適用
-    // ctx.filter = imageFilters[currentFilter] || imageFilters.natural;
+    ctx.filter = imageFilters[currentFilter] || imageFilters.natural;
 
     // TODO: ビデオをキャンバス全体に cover 表示で描画
     ctx.drawImage(
