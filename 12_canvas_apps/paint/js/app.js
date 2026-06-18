@@ -77,7 +77,9 @@ function startDrawing(x, y) {
     // 描画フラグを true に設定
     isDrawing = true;
     // TODO: 最後の位置を更新
-    // [lastX, lastY] = [x, y];
+    [lastX, lastY] = [x, y];
+    // lastX = x
+    // lastY = y
 }
 
 /**
@@ -121,7 +123,7 @@ function endDrawing() {
 
 // イベント
 // TODO: マウスダウンイベント: mousedown
-canvas.addEventListener('', (e) => {
+canvas.addEventListener('mousedown', (e) => {
     const point = getCanvasPoint(e);
     startDrawing(point.x, point.y);
 });
