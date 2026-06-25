@@ -114,10 +114,10 @@ doughnutBtn.addEventListener('click', () => {
 (async function init() {
     try {
         // TODO: Promise.all を使って, 非同期で同時に取得
-        // [salesData, softwaresData] = await Promise.all([
-        //     fetch('api/sales.json').then(r => r.json()),
-        //     fetch('api/softwares.json').then(r => r.json()),
-        // ]);
+        [salesData, softwaresData] = await Promise.all([
+            fetch('api/sales.json').then(r => r.json()),
+            fetch('api/softwares.json').then(r => r.json()),
+        ]);
     } catch {
         document.getElementById('message-container').textContent = 'データの取得に失敗しました';
         return;
