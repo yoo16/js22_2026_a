@@ -102,7 +102,7 @@ function createProportionChart(labels, groups, colors) {
         data: { labels: [''], datasets },
         options: {
             // 横棒グラフにするには indexAxis: 'y' を指定
-            indexAxis: '',
+            indexAxis: 'y',
             responsive: true,
             plugins: {
                 legend: { position: 'bottom', labels: { font: { size: 12 }, padding: 16, boxWidth: 14 } },
