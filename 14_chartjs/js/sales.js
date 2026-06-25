@@ -54,7 +54,7 @@ function createSalesChart(type) {
     ds.fill            = type === 'line';
     ds.pointRadius     = type === 'line' ? 4 : 0;
     // TODO: チャート作成
-    // salesChart = new Chart(ctx, { type, data: salesData, options: salesOptions });
+    salesChart = new Chart(ctx, { type, data: salesData, options: salesOptions });
 }
 
 // ソフトウェアチャートの生成（チャート設定はそのまま）
