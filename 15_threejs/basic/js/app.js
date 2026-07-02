@@ -107,15 +107,16 @@ function animate() {
     requestAnimationFrame(animate);
 
     // TODO: 立方体と球体の回転
-    // sphere.rotation.x += 0.01;
-    // sphere.rotation.y += 0.01;
+    sphere.rotation.x += 0.01;
+    sphere.rotation.y += 0.01;
+    // sphere.position.x += 0.01;
 
     // 時間を取得
     const time = Date.now() * 0.002;
     // TODO: Y軸を中心に上下に揺れる（sin波で振動）
-    // textSprite.position.y = 2 + Math.sin(time) * 0.5;
+    textSprite.position.y = 2 + Math.sin(time) * 0.5;
     // TODO: Z軸回転
-    // textSprite.rotation.z += 0.01;
+    textSprite.rotation.z += 0.01;
 
     // レンダリング
     renderer.render(scene, camera);
