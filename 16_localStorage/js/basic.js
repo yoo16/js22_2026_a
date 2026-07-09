@@ -41,7 +41,7 @@ function escapeHtml(value) {
 function renderInspector() {
     const rows = WATCHED_KEYS.map((key) => {
         // TODO: LocalStorage にキーを設定して値取得
-        const raw = "";
+        const raw = localStorage.getItem(key);
         // 値チェック
         const hasValue = raw !== null;
         // 値がある場合は緑色、ない場合はグレーで表示する
@@ -181,6 +181,7 @@ document.querySelector('[data-action="load-list"]').addEventListener('click', ()
 
 document.querySelector('[data-action="remove-list"]').addEventListener('click', () => {
     // TODO: LocalStorage からキーを指定して値削除: key = list
+    localStorage.removeItem('list');
     
     members = [];
     renderMemberDraft();
@@ -193,6 +194,7 @@ document.querySelector('[data-action="remove-list"]').addEventListener('click', 
 document.querySelector('[data-action="clear-all"]').addEventListener('click', () => {
     // TODO: LocalStorage から監視対象のキーをすべて削除
     // WATCHED_KEYS.forEach(key => localStorage.removeItem(key));
+    localStorage.clear();
     noteInput.value = '';
     members = [];
     renderMemberDraft();
