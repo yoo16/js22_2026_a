@@ -106,6 +106,7 @@ document.querySelector('[data-action="save-text"]').addEventListener('click', ()
         return;
     }
     // TODO: LocalStorage にキーを設定して値保存: key = note
+    localStorage.setItem('note', value);
 
     showMessage('保存しました');
     renderInspector();
@@ -113,7 +114,7 @@ document.querySelector('[data-action="save-text"]').addEventListener('click', ()
 
 document.querySelector('[data-action="load-text"]').addEventListener('click', () => {
     // TODO: LocalStorage からキーを指定して値取得: key = note
-    const value = null;
+    const value = localStorage.getItem('note');
     if (value === null) {
         showMessage('データがありません。先に「保存」を押してください。', 'error');
         return;
@@ -124,6 +125,7 @@ document.querySelector('[data-action="load-text"]').addEventListener('click', ()
 
 document.querySelector('[data-action="remove-text"]').addEventListener('click', () => {
     // TODO: LocalStorage からキーを指定して値削除: key = note
+    localStorage.removeItem('note')
     noteInput.value = '';
     showMessage('削除しました。');
     renderInspector();
@@ -157,6 +159,7 @@ document.querySelector('[data-action="save-list"]').addEventListener('click', ()
         return;
     }
     // TODO: LocalStorage にキーを設定して、JSONを保存: key = list
+    localStorage.setItem('list', JSON.stringify(members));
 
     const text = members.map(member => `${member.name} (${member.age}歳)`).join('\n');
     showMessage(`保存しました:\n${text}`);
@@ -165,7 +168,7 @@ document.querySelector('[data-action="save-list"]').addEventListener('click', ()
 
 document.querySelector('[data-action="load-list"]').addEventListener('click', () => {
     // TODO: LocalStorage からキーを指定して JSON 取得: key = list
-    const json = null;
+    const json = localStorage.getItem('list');
     if (json === null) {
         showMessage('データがありません。先に「保存」を押してください。', 'error');
         return;
