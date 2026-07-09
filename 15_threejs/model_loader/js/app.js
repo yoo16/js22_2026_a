@@ -192,32 +192,32 @@ fileInput.addEventListener('change', event => {
     // FBXファイルの読み込み
     if (extension === 'fbx') {
         // TODO: FBXLoaderの読み込み
-        // const loader = new FBXLoader(manager);
-        // loader.load(
-        //     url,
-        //     object => setupModel(object, object.animations || []),
-        //     xhr => updateProgress(file.name, xhr),
-        //     error => {
-        //         console.error('FBX読込エラー:', error);
-        //         setStatus('FBXの読み込みに失敗しました');
-        //     }
-        // );
+        const loader = new FBXLoader(manager);
+        loader.load(
+            url,
+            object => setupModel(object, object.animations || []),
+            xhr => updateProgress(file.name, xhr),
+            error => {
+                console.error('FBX読込エラー:', error);
+                setStatus('FBXの読み込みに失敗しました');
+            }
+        );
         return;
     }
 
     // GLB/GLTFファイルの読み込み
     if (extension === 'glb' || extension === 'gltf') {
         // TODO: GLTFLoaderの読み込み
-        // const loader = new GLTFLoader(manager);
-        // loader.load(
-        //     url,
-        //     gltf => setupModel(gltf.scene, gltf.animations || []),
-        //     xhr => updateProgress(file.name, xhr),
-        //     error => {
-        //         console.error('GLB/GLTF読込エラー:', error);
-        //         setStatus('GLB / GLTFの読み込みに失敗しました');
-        //     }
-        // );
+        const loader = new GLTFLoader(manager);
+        loader.load(
+            url,
+            gltf => setupModel(gltf.scene, gltf.animations || []),
+            xhr => updateProgress(file.name, xhr),
+            error => {
+                console.error('GLB/GLTF読込エラー:', error);
+                setStatus('GLB / GLTFの読み込みに失敗しました');
+            }
+        );
         return;
     }
 
