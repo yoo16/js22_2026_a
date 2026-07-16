@@ -20,28 +20,30 @@ const store = {
      */
     set(key, value) {
         // TODO: JSON文字列に変換して保存
-        // const json = JSON.stringify(value);
-        // localStorage.setItem(key, json);
+        const json = JSON.stringify(value);
+        localStorage.setItem(key, json);
     },
     /**
      * 取得
      */
     get(key) {
         // TODO: LocalStorage からキーを指定して値取得して、JSONをパースして返す
-        // const values = localStorage.getItem(key);
-        // return values ? JSON.parse(values) : [];
+        const values = localStorage.getItem(key);
+        return values ? JSON.parse(values) : [];
     },
     /**
      * 削除
      */
     remove(key) {
         // TODO: LocalStorage からキーを指定して値削除
+        localStorage.removeItem(key);
     },
     /**
      * すべて削除
      */
     clear() {
         // TODO: LocalStorage からすべて削除
+        localStorage.clear();
     }
 };
 /**
