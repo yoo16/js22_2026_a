@@ -60,12 +60,13 @@ const add = (e) => {
     if (!text) return;
     // 新しいタスクを追加
     // TODO: UUIDを生成: crypto.randomUUID() 
-    const id = 0;
+    const id = crypto.randomUUID();
     // 作成日
     const createdAt = Date.now();
     // 完了状態
     const done = false;
     // TODO: タスクを配列に追加: tasks.push(): id, text, createdAt, done
+    tasks.push({ id, text, createdAt, done });
     
     // 入力フィールドをクリア
     $new.value = "";
