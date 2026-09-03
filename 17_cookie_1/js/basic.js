@@ -10,8 +10,11 @@ showCookies();
 
 // 前回閉じていれば（Cookieが残っていれば）、最初から広告を非表示にする
 // ※ cookie.js の関数は使わず、document.cookie の基本文法だけで実装する
-// TODO: document.cookie に `${AD_KEY}=` という文字列が含まれているか確認し、
+// TODO: document.cookie に `${AD_KEY}=1` という文字列が含まれているか確認し、
 //       含まれていれば adBanner.classList.add("hidden"); を実行する
+if (document.cookie.includes(`${AD_KEY}=1`)) {
+    adBanner.classList.add("hidden");
+}
 
 // 閉じるボタン：7日間（60秒×60分×24時間×7日）表示しないようCookieに記録する
 document.getElementById("adCloseBtn").addEventListener("click", () => {
