@@ -27,6 +27,7 @@ document.getElementById("adCloseBtn").addEventListener("click", () => {
 // リセットボタン：有効期限を過去にしてCookieを削除し、次回から再び広告を表示する
 document.getElementById("adResetBtn").addEventListener("click", () => {
     // TODO: document.cookie に `${AD_KEY}=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT` を代入する
+    document.cookie = `${AD_KEY}=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT`;
     adBanner.classList.remove("hidden");
     showCookies();
 });
