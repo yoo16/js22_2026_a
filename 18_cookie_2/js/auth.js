@@ -24,7 +24,7 @@
         // TODO: セッションCookie(sid)を一緒に送るよう credentials を設定する
         //       ヒント: "same-origin" または "include"
         const res = await fetch("./api/csrf.php", {
-            credentials: "omit"
+            credentials: "same-origin"
         });
         const data = await res.json();
         csrfToken = data.csrf_token;
@@ -39,6 +39,7 @@
                 "Content-Type": "application/json",
                 // TODO: CSRFトークンをヘッダーにセットする（キー名: X-CSRF-Token）
                 //       ヒント: csrfToken が入っていればスプレッド構文で追加する
+                ...(csrfToken ? { "X-CSRF-Token": csrfToken } : {})
             },
             // TODO: セッションCookie(sid)を送れるよう credentials を設定する
             credentials: "omit",
