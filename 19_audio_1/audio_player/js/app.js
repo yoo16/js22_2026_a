@@ -39,7 +39,7 @@ async function fetchTracks() {
         // レスポンスが正常でない場合はエラーをスロー
         const data = await response.json();
         // TODO: tracks配列に取得したトラック情報を追加
-        // tracks.push(...data);
+        tracks.push(...data);
 
         // プレイリストをレンダリングし、最初のトラックを読み込む
         renderPlaylist();
@@ -311,6 +311,7 @@ function loadTrack(index) {
     const track = tracks[currentTrackIndex];
 
     // TODO: オーディオのsrcを設定
+    audio.src = track.src
 
     trackTitle.textContent = track.title;
     trackArtist.textContent = track.artist;
