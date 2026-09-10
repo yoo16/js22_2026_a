@@ -358,11 +358,13 @@ function playAudio() {
     }
 
     // TODO: オーディオを再生: play()
+    audio.play()
 }
 
 // オーディオの一時停止
 function pauseAudio() {
     // TODO: オーディオを一時停止: pause()
+    audio.pause();
 }
 
 // 再生/一時停止の切り替え
