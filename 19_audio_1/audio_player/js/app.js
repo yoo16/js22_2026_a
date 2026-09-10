@@ -248,10 +248,10 @@ async function updateCover(src) {
     setCover(null);
 
     // TODO: オーディオファイルのカバー画像を取得
-    // const coverUrl = await getCoverUrl(src);
-    // if (requestId === coverRequestId) {
-    //     setCover(coverUrl);
-    // }
+    const coverUrl = await getCoverUrl(src);
+    if (requestId === coverRequestId) {
+        setCover(coverUrl);
+    }
 }
 
 // プレイリストのレンダリング
@@ -462,14 +462,14 @@ nextBtn.addEventListener('click', nextTrack);
 progressBar.addEventListener('input', seekAudio);
 
 // TODO: 音量バーイベント
-// volumeBar.addEventListener('input', (event) => {
-//     audio.volume = Number(event.target.value);
-// });
+volumeBar.addEventListener('input', (event) => {
+    audio.volume = Number(event.target.value);
+});
 
 // TODO: 速度セレクトイベント
-// speedSelect.addEventListener('change', (event) => {
-//     audio.playbackRate = Number(event.target.value);
-// });
+speedSelect.addEventListener('change', (event) => {
+    audio.playbackRate = Number(event.target.value);
+});
 
 // シャッフルボタンイベント
 shuffleBtn.addEventListener('click', () => {
@@ -484,29 +484,30 @@ repeatBtn.addEventListener('click', () => {
 });
 
 // TODO: オーディオ再生イベント
-// audio.addEventListener('play', () => {
-//     playBtn.textContent = 'Ⅱ';
-//     startVisualizer();
-// });
+audio.addEventListener('play', () => {
+    playBtn.textContent = 'Ⅱ';
+    startVisualizer();
+});
 
 // TODO: オーディオ一時停止イベント
-// audio.addEventListener('pause', () => {
-//     playBtn.textContent = '▶';
-//     stopVisualizer();
-// });
+audio.addEventListener('pause', () => {
+    playBtn.textContent = '▶';
+    stopVisualizer();
+});
 
 // TODO: オーディオのメタデータが読み込み完了イベント
-// audio.addEventListener('loadedmetadata', () => {
-//     duration.textContent = formatTime(audio.duration);
-// });
+audio.addEventListener('loadedmetadata', () => {
+    duration.textContent = formatTime(audio.duration);
+});
 
 // TODO: オーディオのタイム更新イベント
-// audio.addEventListener('timeupdate', updateProgress);
+audio.addEventListener('timeupdate', updateProgress);
 
 // オーディオの再生終了イベント
 audio.addEventListener('ended', () => {
     if (isRepeat) {
         // TODO: オーディオの再生位置をリセット: currentTime = 0
+        audio.currentTime = 0;
 
         // オーディオを再生
         playAudio();
