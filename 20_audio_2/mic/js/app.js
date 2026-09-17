@@ -84,14 +84,14 @@ function updateRecordButton() {
 async function startRecording() {
     try {
         // TODO: メディアストリーム取得
-        const stream = null;
-        // const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        // const stream = null;
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
 
         // TODO: オーディオコンテキストの作成: new AudioContext() または window.webkitAudioContext()
-        audioContext = null;
+        audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
         // MediaStream からオーディオソースノードを生成: createMediaStreamSource()
-        const source = null;
+        const source = audioContext.createMediaStreamSource(stream);
 
         // AnalyserNode を作成して FFT サイズを設定
         analyser = audioContext.createAnalyser();
@@ -101,7 +101,7 @@ async function startRecording() {
         // スムージング係数を設定（0.0 から 1.0 の範囲で、値が大きいほど平滑化される）
         analyser.smoothingTimeConstant = 0.78;
         // TODO: オーディオソースを AnalyserNode に接続
-        // source.connect(analyser);
+        source.connect(analyser);
 
         // ストリームオブジェクトを保持
         microphoneStream = stream;
@@ -290,7 +290,7 @@ function updateInputLevel() {
         sumSquares += normalized * normalized;
     }
     // TODO: RMS値: ルート平均二乗値を計算して音量レベルを求める: Math.sqrt(sumSquares / dataArray.length)
-    const rms = 0;
+    const rms = Math.sqrt(sumSquares / dataArray.length);
     // rms を 0-100 のスケールに変換（調整が必要な場合は multiplier を変更）
     const level = Math.min(100, rms * 260);
 
