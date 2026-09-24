@@ -199,7 +199,7 @@ function render() {
     // 現在のタイムスタンプを取得
     const timestamp = performance.now();
     // TODO: 顔ランドマークを推定: estimateFaces(): detector, videoEl, timestamp を引数
-    const faces = [];
+    const faces = estimateFaces(detector, videoEl, timestamp);
     // 描画
     drawResults(faces);
     // ステータスを更新
