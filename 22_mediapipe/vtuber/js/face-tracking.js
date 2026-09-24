@@ -89,7 +89,6 @@ export async function startCameraStream(video) {
     },
     audio: false,
   });
-  // TODO: video 要素にカメラの映像 stream を設定して再生: video.srcObject, video.play()
   video.srcObject = stream;
   await video.play();
 }
@@ -100,8 +99,7 @@ export function getSmoothedFaceFrame({ detector, video, now, currentFrame }) {
   }
 
   try {
-    // TODO: 動画フレームから顔ランドマークを検出: detector.detectForVideo(): 引数: video, now
-    const result = { faceLandmarks: [] };
+    const result = detector.detectForVideo(video, now);
     const landmarks = result.faceLandmarks[0];
     const nextFrame = landmarks ? analyzeLandmarks(landmarks) : DEFAULT_FRAME;
     return smoothFrame(currentFrame, nextFrame);
@@ -166,8 +164,7 @@ function calculateHeadRotation(landmarks) {
 
   const rawYaw = ((yawBase - noseTip.x) / yawScale) * LIMITS.yaw;
   const rawPitch = ((eyesMidpointY - noseTip.y) / pitchScale) * LIMITS.pitch;
-  // TODO: 両目を結ぶ線の傾き（roll）を計算: Math.atan2(y の差, x の差)。右目 - 左目
-  const rawRoll = 0;
+  const rawRoll = Math.atan2(rightEye.y - leftEye.y, rightEye.x - leftEye.x);
 
   if (calibratingHead) {
     headOffset = { yaw: rawYaw, pitch: rawPitch, roll: rawRoll };
@@ -191,10 +188,8 @@ function calculateEyeBlink(landmarks, upperIndices, lowerIndices, outerIndex, in
     return 0;
   }
 
-  // TODO: 目の高さ（upper と lower の距離）を計算: distance2D()
-  const eyeHeight = 0;
-  // TODO: 目の幅（outer と inner の距離）を計算: distance2D()
-  const eyeWidth = 0;
+  const eyeHeight = distance2D(upper, lower);
+  const eyeWidth = distance2D(outer, inner);
   if (eyeWidth <= 0) {
     return 0;
   }
@@ -224,8 +219,7 @@ function calculateMouthShape(landmarks) {
     return DEFAULT_FRAME.mouth;
   }
 
-  // TODO: 口の開き具合: 上唇と下唇の距離 ÷ 顔の大きさ を normalize(値, 0.015, 0.12) で 0〜1 に変換
-  const openness = 0;
+  const openness = normalize(distance2D(upperLip, lowerLip) / faceSize, 0.015, 0.12);
   const widthRatio = distance2D(mouthLeft, mouthRight) / faceWidth;
   const roundness = 1 - normalize(widthRatio, 0.38, 0.62);
 
@@ -332,8 +326,6 @@ function clamp(value, min, max) {
   return Math.min(Math.max(value, min), max);
 }
 
-// 線形補間: from から to へ amount（0〜1）の割合だけ近づけた値を返す
 function lerp(from, to, amount) {
-  // TODO: from + (to - from) * amount を返す（今は to をそのまま返すので動きがガタつく）
-  return to;
+  return from + (to - from) * amount;
 }
