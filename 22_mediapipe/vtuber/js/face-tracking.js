@@ -90,7 +90,8 @@ export async function startCameraStream(video) {
     audio: false,
   });
   // TODO: video 要素にカメラの映像 stream を設定して再生: video.srcObject, video.play()
-
+  video.srcObject = stream;
+  await video.play();
 }
 
 export function getSmoothedFaceFrame({ detector, video, now, currentFrame }) {

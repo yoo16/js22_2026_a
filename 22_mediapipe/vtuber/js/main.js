@@ -109,7 +109,7 @@ async function initializeFaceDetector() {
   try {
     setText(elements.detectorStatus, 'loading');
     // TODO: 顔ランドマーク推定器を初期化(非同期): createFaceDetector()
-    state.detector = null;
+    state.detector = await createFaceDetector();
     setText(elements.detectorStatus, 'ready');
   } catch (error) {
     setText(elements.detectorStatus, `error: ${toMessage(error)}`);
@@ -120,6 +120,7 @@ async function startCamera() {
   try {
     setText(elements.cameraStatus, 'requesting');
     // TODO: Webカメラを開始(非同期): startCameraStream(): 引数: elements.video
+    await startCameraStream(elements.video);
 
     setText(elements.cameraStatus, 'running');
   } catch (error) {
