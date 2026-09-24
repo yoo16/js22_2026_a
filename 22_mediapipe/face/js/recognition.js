@@ -216,7 +216,7 @@ async function app() {
         showIndices = toggleIndexEl.checked;
     });
     // TODO: 顔ランドマーク推定器を初期化(非同期): createFaceLandmarker
-    detector = {};
+    detector = await createFaceLandmarker();
     // Webカメラをセットアップ
     await setupCamera();
     render();
