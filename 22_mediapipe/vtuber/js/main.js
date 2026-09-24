@@ -142,6 +142,7 @@ async function handleVrmFile(event) {
 
     prepareVRMForFaceStage(vrm);
     // TODO: VRM のシーンを 3D 空間に追加: sceneState.root.add(vrm.scene)
+    sceneState.root.add(vrm.scene)
 
     state.currentVrm = vrm;
   } catch (error) {

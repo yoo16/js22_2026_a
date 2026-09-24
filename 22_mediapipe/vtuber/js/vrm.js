@@ -19,6 +19,7 @@ const NATURAL_ARM_POSE = [
 export async function loadVRM(file) {
   const loader = new GLTFLoader();
   // TODO: GLTFLoader に VRM 用のプラグインを登録: loader.register((parser) => new VRMLoaderPlugin(parser))
+  loader.register((parser) => new VRMLoaderPlugin(parser));
 
   const objectUrl = URL.createObjectURL(file);
 
