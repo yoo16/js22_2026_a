@@ -174,7 +174,7 @@ function render() {
     // タイムスタンプ
     const timestamp = performance.now();
     // TODO: 手のランドマークを推定: estimateHands(): 引数: landmarker, videoEl, timestamp
-    const hands = {};
+    const hands = estimateHands(landmarker, videoEl, timestamp);
     // 手のランドマークの描画
     drawHands(hands);
     // 手の詳細情報の描画
