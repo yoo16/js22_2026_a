@@ -218,6 +218,7 @@ function updatemesh() {
     // 顔の傾き処理
     const quaternion = calculateNormalVector();
     // TODO: スタンプの回転: three.js のクォータニオンを使用: mesh.quaternion.copy(quaternion)
+    mesh.quaternion.copy(quaternion);
 
     // スタンプの位置
     const settings = faceImages[currentFaceImage];
@@ -279,9 +280,9 @@ function calculateNormalVector() {
         .normalize();
 
     // TODO: クォータニオンを作成
-    // const quaternion = new THREE.Quaternion();
-    // quaternion.setFromUnitVectors(new THREE.Vector3(0, 0, 1), faceNormalVector);
-    // return quaternion;
+    const quaternion = new THREE.Quaternion();
+    quaternion.setFromUnitVectors(new THREE.Vector3(0, 0, 1), faceNormalVector);
+    return quaternion;
 }
 
 /**
